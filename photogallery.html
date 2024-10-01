@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tábor Vyhlídka</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Záhlaví stránky -->
+    <div class="header-content">
+        <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130">
+        <h1>Tábor Vyhlídka</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Úvod</a></li>
+                <li><a href="aboutus.html" class="nav-link">O nás</a></li>
+                <li><a href="registration.html" class="nav-link">Přihláška</a></li>
+                <li><a href="bringwith.html" class="nav-link">Co si s sebou vzít?</a></li>
+                <li><a href="photogallery.html" class="nav-link">Fotogalerie</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Hlavní sekce -->
+    <div class="main-section">
+        <h2>Fotogalerie</h2>
+        <div class="slider">
+            <div class="slides">
+                <img src="album/gallery/pic100.jpg" alt="Slide 1">
+                <img src="album/gallery/pic101.jpg" alt="Slide 2">
+                <img src="album/gallery/pic102.JPG" alt="Slide 3">
+                <img src="album/gallery/pic103.JPG" alt="Slide 4">
+                <img src="album/gallery/pic104.JPG" alt="Slide 5">
+                <img src="album/gallery/pic105.JPG" alt="Slide 6">
+                <img src="album/gallery/pic106.JPG" alt="Slide 7">
+                <img src="album/gallery/pic107.JPG" alt="Slide 8">
+                <img src="album/gallery/pic108.JPG" alt="Slide 9">
+                <img src="album/gallery/pic109.jpg" alt="Slide 10">
+                <img src="album/gallery/pic110.jpg" alt="Slide 11">
+                <img src="album/gallery/pic111.jpg" alt="Slide 12">
+                <img src="album/gallery/pic112.jpg" alt="Slide 13">
+                <img src="album/gallery/pic113.jpg" alt="Slide 14">
+                <img src="album/gallery/pic114.jpg" alt="Slide 15">
+                <img src="album/gallery/pic115.jpg" alt="Slide 16">
+                <img src="album/gallery/pic116.jpg" alt="Slide 17">
+                <img src="album/gallery/pic117.jpg" alt="Slide 18">
+                <img src="album/gallery/pic118.jpg" alt="Slide 19">
+                <img src="album/gallery/pic119.jpg" alt="Slide 20">
+                <img src="album/gallery/pic120.jpg" alt="Slide 21">
+                <img src="album/gallery/pic121.jpg" alt="Slide 22">
+                <img src="album/gallery/pic122.jpg" alt="Slide 23">
+                <img src="album/gallery/pic123.jpg" alt="Slide 24">
+                <img src="album/gallery/pic124.jpg" alt="Slide 25">
+                <img src="album/gallery/pic125.jpg" alt="Slide 26">
+            </div>
+        
+            <!-- Navigation buttons -->
+            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        </div>
+        
+        <!-- Dots for navigation -->
+        <div class="dots">
+            <span onclick="currentSlide(1)"></span>
+            <span onclick="currentSlide(2)"></span>
+            <span onclick="currentSlide(3)"></span>
+            <span onclick="currentSlide(4)"></span>
+            <span onclick="currentSlide(5)"></span>
+            <span onclick="currentSlide(6)"></span>
+            <span onclick="currentSlide(7)"></span>
+            <span onclick="currentSlide(8)"></span>
+            <span onclick="currentSlide(9)"></span>
+            <span onclick="currentSlide(10)"></span>
+            <span onclick="currentSlide(11)"></span>
+            <span onclick="currentSlide(12)"></span>
+            <span onclick="currentSlide(13)"></span>
+            <span onclick="currentSlide(14)"></span>
+            <span onclick="currentSlide(15)"></span>
+            <span onclick="currentSlide(16)"></span>
+            <span onclick="currentSlide(17)"></span>
+            <span onclick="currentSlide(18)"></span>
+            <span onclick="currentSlide(19)"></span>
+            <span onclick="currentSlide(20)"></span>
+            <span onclick="currentSlide(21)"></span>
+            <span onclick="currentSlide(22)"></span>
+            <span onclick="currentSlide(23)"></span>
+            <span onclick="currentSlide(24)"></span>
+            <span onclick="currentSlide(25)"></span>
+            <span onclick="currentSlide(26)"></span>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Tábor Vyhlídka</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+    
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+    
+        function showSlides(n) {
+            let slides = document.querySelectorAll(".slides img");
+            let dots = document.querySelectorAll(".dots span");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            slides.forEach(slide => {
+                slide.style.display = "none";
+                slide.classList.remove("enlarged"); // Remove enlarged class from all images
+            });
+            dots.forEach(dot => dot.classList.remove("active"));
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].classList.add("active");
+
+            // Add click event listener to the current slide
+            slides[slideIndex - 1].onclick = function() {
+                this.classList.toggle("enlarged"); // Toggle enlarged class on click
+            };
+        }
+    </script>
+</body>
+</html>

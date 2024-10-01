@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tábor Vyhlídka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="png/jpeg" href="/album/logo/vyhlidka1.png">
+</head>
+<body>
+    <!-- Záhlaví stránky -->
+    <div class="header-content">
+        <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130">
+        <h1>Tábor Vyhlídka</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Úvod</a></li>
+                <li><a href="aboutus.html" class="nav-link">O nás</a></li>
+                <li><a href="registration.html" class="nav-link">Přihláška</a></li>
+                <li><a href="bringwith.html" class="nav-link">Co si s sebou vzít?</a></li>
+                <li><a href="photogallery.html" class="nav-link">Fotogalerie</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="slider-background">
+        <div class="slide" style="background-image: url('album/card_slider/picture1.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture3.JPG');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture4.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture5.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture6.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture7.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture8.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture9.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture10.jpeg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture11.JPG');"></div>
+    </div>
+
+    <!-- Hlavní sekce -->
+    <div class="main-section">
+        <h2>Vítejte na oficiální webové stránce letního tábora Vyhlídka! </h2>
+        <br>
+        <p>Jsme nadšení, že vás můžeme přivítat a představit vám náš jedinečný letní tábor, který je plný zábavy, dobrodružství a nezapomenutelných chvil pro děti od 6 do 18 let.
+            Náš tábor je pořádán pobočným spolkem Kolpingova rodina Žďár nad Sázavou s 30 letou tradicí. Každý rok se těšíme na setkání se stávajícími členy i všemi novými účastníky, kteří budou součástí naší táborové rodiny.</p>
+            <br>
+        <h2>Termín nadcházejícího tábora: 5. - 13.7. 2025</h2>
+    </div>
+
+    <!-- Sekce s přihláškou -->
+    <div class="registration-section">
+        <h2>Přihláška ke stažení zde</h2>
+        <a href="files/Přihláška-na-tábor-2024.pdf" download class="download-button" target="_blank">Přihláška</a>
+    </div>
+
+    <!-- Sociální sítě -->
+    <div class="socials-section">
+        <h2>Naše sociální sítě</h2>
+        <a href="https://www.instagram.com/vyhlidka.tabor/" target="_blank" class="social-link">https://www.instagram.com/vyhlidka.tabor/</a>
+        <a href="https://www.tiktok.com/@vyhlidka.tabor" target="_blank" class="social-link">https://www.tiktok.com/@vyhlidka.tabor</a>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="image-container">
+            <img src="album/logo/logo-mesta-zaklad.png" alt="ZdarnS_logo"  width="230" height="130">
+            <img src="album/logo/MSMT_logotyp_text_CMYK_cz.png" alt="MSMT_logo"  width="250" height="130">
+            <img src="album/logo/PODPORIL_KV_CMYK_zakladni.png" alt="KrajVysocina_logo"  width="320" height="130">
+        </div>
+            <br>
+        <p>© 2024 Tábor Vyhlídka</p>
+    </footer>
+
+    <script>
+
+        let currentSlide = localStorage.getItem('currentSlide') ? parseInt(localStorage.getItem('currentSlide')) : 0;
+        const slides = document.querySelectorAll('.slider-background .slide');
+        const totalSlides = slides.length;
+    
+        // Funkce pro zobrazení aktuálního snímku
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+  
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides; 
+            showSlide(currentSlide);
+            localStorage.setItem('currentSlide', currentSlide);  
+        }
+    
+        setInterval(nextSlide, 10000);
+        window.addEventListener('load', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>

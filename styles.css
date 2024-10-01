@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('album/apicture.jpg') no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    color: black;
+}
+
+
+.header-content {
+    color: #808080;
+    text-align: center;
+    height: auto;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.9);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+nav ul li a {
+    color: #808080;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #C0C0C0;
+    color: white;
+    border-radius: 5px;
+}
+
+.main-section, .registration-section, .socials-section {
+    text-align: center;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    margin: 100px auto;
+    width: 45%;
+    background-color: rgba(245, 245, 245, 0.82);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    height: auto;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+}
+
+.socials-section a {
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.socials-section a:hover {
+    color: #007BFF;
+}
+
+
+footer {
+    flex-shrink: 0; 
+    background-color: rgba(245, 245, 245, 0.9);
+    color: black;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 100px;
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+footer p {
+    font-size: 1.3em;
+}
+
+.main-section h2, 
+.registration-section h2, 
+.socials-section h2 {
+    color: #00BFFF;
+}
+
+.download-button {
+    display: flex;
+    justify-content: center;    /* Horizontální centrování textu */
+    align-items: center;        /* Vertikální centrování textu */
+    background-color: #00BFFF;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.3em;           /* Zvětší velikost písma na požadovanou hodnotu */
+    font-weight: bold;
+    width: 300px;               /* Nastaví šířku tlačítka */
+    height: 75px;               /* Nastaví výšku tlačítka */
+}
+
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+.registration-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials-section {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials-section h2 {
+    color: #00BFFF;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.socials-section p {
+    font-size: 18px;
+    color: #00BFFF;
+    line-height: 1.8;
+}
+
+.socials-section a {
+    font-size: 23px;
+    color: #00BFFF;
+    line-height: 1.8;
+}
+
+.social-link {
+    color: #00BFFF;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+
+.socials-section{
+    display: flex;          /* Flexbox pro zobrazení v řadě */
+    justify-content: center; /* Centrovat obrázky horizontálně */
+    gap: 10px;               /* Mezera mezi obrázky */
+    margin: 0 auto;          /* Vystředí kontejner ve vztahu k nadřazenému prvku */
+    max-width: 100%;         /* Zabrání přetékání, zajistí správné chování při změně velikosti okna */
+}
+
+.main-section p {
+    font-size: 23px;
+}
+
+/* Slider Background - Pozadí přes celou stránku */
+.slider-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Posune slider za obsah stránky */
+    overflow: hidden;
+}
+
+/* Styl pro jednotlivé slidy */
+.slider-background .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;  /* Skryté obrázky na začátku */
+    transition: opacity 1s ease-in-out;
+}
+
+/* Aktivní obrázek */
+.slider-background .slide.active {
+    opacity: 1;  /* Zobrazený obrázek */
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Slide images */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 800px; /* Adjust to fit within the slider */
+    justify-content: center; /* Center align slides */
+    align-items: center; /* Center vertically */
+}
+
+.slides img {
+    width: 800px; /* Set width to 400px */
+    height: 700px; /* Set height to 700px */
+    object-fit: cover; /* Ensures the image covers the area without distorting aspect ratio */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable images */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Enlarged image on click */
+.slides img.enlarged {
+    position: relative;
+    z-index: 10; /* Bring enlarged image to the front */
+    transform: scale(1.5); /* Increase the size */
+}
+
+/* Navigation buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Dots */
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dots span {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.active, .dots span:hover {
+    background-color: #717171;
+}
+

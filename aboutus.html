@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tábor Vyhlídka</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Záhlaví stránky -->
+    <div class="header-content">
+        <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130">
+        <h1>Tábor Vyhlídka</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Úvod</a></li>
+                <li><a href="aboutus.html" class="nav-link">O nás</a></li>
+                <li><a href="registration.html" class="nav-link">Přihláška</a></li>
+                <li><a href="bringwith.html" class="nav-link">Co si s sebou vzít?</a></li>
+                <li><a href="photogallery.html" class="nav-link">Fotogalerie</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="slider-background">
+        <div class="slide" style="background-image: url('album/card_slider/picture1.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture3.JPG');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture4.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture5.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture6.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture7.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture8.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture9.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture10.jpeg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture11.JPG');"></div>
+    </div>
+
+    <!-- Hlavní sekce -->
+    <div class="main-section">
+        <h2>O nás</h2>
+        <br>
+        <p>Jsme nadšení, že vás můžeme přivítat a představit vám náš jedinečný letní tábor, který je plný zábavy, dobrodružství a nezapomenutelných chvil pro děti od 6 do 18 let.
+
+            Náš tábor je pořádán pobočným spolkem Kolpingova rodina Žďár nad Sázavou s 30 letou tradicí. Každý rok se těšíme na setkání se stávajícími členy i všemi novými účastníky, kteří budou součástí naší táborové rodiny.
+            
+            Tábor se koná v krásné vesnici Blansko – Češkovice v Moravském krasu, kde se nachází Rekreační zařízení Vyhlídka. Tato malebná lokalita plná přírodních krás nám poskytuje ideální prostředí pro letní dobrodružství a spoustu možností pro zábavu a vzdělání.
+            
+            
+            Naši táborníci se mohou těšit na mnoho aktivit. Od soutěží, diskoték a zábavných her, které posilují týmovou spolupráci a kreativitu, až po romantické táboráky pod hvězdami. Navíc pravidelně pořádáme výlety do okolí, abychom objevili krásy Moravského krasu a jeskynních prostorů v okolí. Nechybí také koupání v místním rybníku Kačák, večerní nástupy, noční bojovky, ranní rozcvičky a spoustu dalšího.
+            
+            
+            Celými čtrnácti dny se prolíná celotáborová hra, která je každý rok jiná a tematicky doplňuje hry a táborové aktivity.
+            
+            Jsme hrdí na to, že v průběhu celého tábora se o vaše děti bude starat parta nadšených a zkušených vedoucích, kteří mají bohaté zkušenosti v oblasti práce s mládeží. Naši vedoucí jsou připraveni zajistit, aby děti zažily bezpečná a nezapomenutelná letní dobrodružství.
+            
+            A co se stane poté, až tento nezapomenutelný tábor skončí?
+            
+            Neztrácejte naději! Každoročně pořádáme potáborové srazy, kde se účastníci setkávají, vzpomínají na svá dobrodružství a společně se těší na další ročník.
+            
+            
+            Klademe si za cíl, aby vaše děti prožily nejen vzrušující letní týden, odpojily se alespoň na chvíli od online světa, ale také aby si vytvořily trvalé vzpomínky a přátelství na celý život.
+            
+            Připojte se k nám a zažijte Letní tábor Vyhlídka plný zábavy a dobrodružství.</p>
+    </div>
+    <!-- Footer -->
+    <footer>
+              <div class="image-container">
+                <img src="album/logo/logo-mesta-zaklad.png" alt="ZdarnS_logo"  width="230" height="130">
+                <img src="album/logo/MSMT_logotyp_text_CMYK_cz.png" alt="MSMT_logo"  width="250" height="130">
+                <img src="album/logo/PODPORIL_KV_CMYK_zakladni.png" alt="KrajVysocina_logo"  width="320" height="130">
+            </div>
+            <br>
+        <p>© 2024 Tábor Vyhlídka</p>
+    </footer>
+
+    <script>
+        // Získá uložený index snímku z localStorage, nebo nastaví 0, pokud není uložený
+        let currentSlide = localStorage.getItem('currentSlide') ? parseInt(localStorage.getItem('currentSlide')) : 0;
+        const slides = document.querySelectorAll('.slider-background .slide');
+        const totalSlides = slides.length;
+    
+        // Funkce pro zobrazení aktuálního snímku
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+    
+        // Funkce pro přechod na další snímek
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;  // Cyklický přechod na další snímek
+            showSlide(currentSlide);
+            localStorage.setItem('currentSlide', currentSlide);  // Uložení aktuálního snímku do localStorage
+        }
+    
+        // Automatické přepínání snímků každé 4 sekundy
+        setInterval(nextSlide, 10000);
+    
+        // Načtení a zobrazení uloženého snímku při načtení stránky
+        window.addEventListener('load', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>

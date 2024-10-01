@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tábor Vyhlídka</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Záhlaví stránky -->
+    <div class="header-content">
+        <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130">
+        <h1>Tábor Vyhlídka</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Úvod</a></li>
+                <li><a href="aboutus.html" class="nav-link">O nás</a></li>
+                <li><a href="registration.html" class="nav-link">Přihláška</a></li>
+                <li><a href="bringwith.html" class="nav-link">Co si s sebou vzít?</a></li>
+                <li><a href="photogallery.html" class="nav-link">Fotogalerie</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="slider-background">
+        <div class="slide" style="background-image: url('album/card_slider/picture1.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture3.JPG');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture4.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture5.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture6.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture7.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture8.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture9.jpg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture10.jpeg');"></div>
+        <div class="slide" style="background-image: url('album/card_slider/picture11.JPG');"></div>
+    </div>
+
+
+    <div class="registration-section">
+        <h2>Přihláška ke stažení zde</h2>
+        <a href="files/Přihláška-na-tábor-2024.pdf" download class="download-button" target="_blank">Přihláška</a>
+        <br>
+        <p>1. Stáhni a vyplň přihlášku s dotazníkem ✍️.</p>
+        <p>2. Nech si od lékaře potvrdit, že jsi způsobilý jet na tábor 👨‍⚕️.</p>
+        <p>3. Uhraď cenu tábora na bankovní účet uvedený v přihlášce 💸.</p>
+        <p>4. Odešli přihlášku na adresu uvedenou v kontaktech 📩.</p>
+        <p>5. PAK UŽ JEN POČÍTEJ DNY DO ZAČÁTKU TÁBORA! 🤩🤩</p>
+        </div>
+    <footer>
+              <div class="image-container">
+                <img src="album/logo/logo-mesta-zaklad.png" alt="ZdarnS_logo"  width="230" height="130">
+                <img src="album/logo/MSMT_logotyp_text_CMYK_cz.png" alt="MSMT_logo"  width="250" height="130">
+                <img src="album/logo/PODPORIL_KV_CMYK_zakladni.png" alt="KrajVysocina_logo"  width="320" height="130">
+            </div>
+            <br>
+        <p>© 2024 Tábor Vyhlídka</p>
+    </footer>
+
+    <script>
+        // Získá uložený index snímku z localStorage, nebo nastaví 0, pokud není uložený
+        let currentSlide = localStorage.getItem('currentSlide') ? parseInt(localStorage.getItem('currentSlide')) : 0;
+        const slides = document.querySelectorAll('.slider-background .slide');
+        const totalSlides = slides.length;
+    
+        // Funkce pro zobrazení aktuálního snímku
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+    
+        // Funkce pro přechod na další snímek
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;  // Cyklický přechod na další snímek
+            showSlide(currentSlide);
+            localStorage.setItem('currentSlide', currentSlide);  // Uložení aktuálního snímku do localStorage
+        }
+    
+        // Automatické přepínání snímků každé 4 sekundy
+        setInterval(nextSlide, 10000);
+    
+        // Načtení a zobrazení uloženého snímku při načtení stránky
+        window.addEventListener('load', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
+
