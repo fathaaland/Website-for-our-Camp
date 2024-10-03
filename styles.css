@@ -334,3 +334,17 @@ footer p {
     color: #00BFFF;  
 }
 
+.main-section-aboutus, .main-section-aboutus-two {
+    display: flex;                  /* Použijte Flexbox */
+    flex-direction: column;          /* Elementy jsou vertikálně nad sebou */
+    align-items: center;             /* Horizontální centrování obsahu */
+    justify-content: center;         /* Vertikální centrování obsahu */
+    text-align: center;              /* Text bude centrován uvnitř kontejneru */
+    padding: auto 25px;                   /* O něco větší padding pro lepší vzhled */
+    margin: 100px auto;              /* Nastaví kontejner na střed stránky */
+    width: 65%;                      /* Šířka kontejneru */
+    background-color: rgba(245, 245, 245, 0.82);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    height: auto;
+}
