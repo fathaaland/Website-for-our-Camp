@@ -61,7 +61,7 @@ nav ul li a:hover {
 
 .main-section, .registration-section, .socials-section {
     text-align: center;
-    padding: 40px;
+    padding: 30px;
     position: relative;
     z-index: 1;
     margin: 100px auto;
@@ -298,30 +298,18 @@ footer p {
     background-color: #717171;
 }
 
-.main-section-aboutus, .main-section-bring{
-    text-align: center;
-    padding: 40px;
-    position: relative;
-    z-index: 1;
-    margin: 100px auto;
-    width: 65%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
-}
-
-.main-section-bring-two {
-    text-align: center;
-    padding: 40px;
-    position: relative;
-    z-index: 1;
-    margin: 100px auto;
-    width: 65%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
+.main-section-aboutus, .main-section-bring, .main-section-aboutus-two, .main-section-bring-two{
+        text-align: center;
+        flex-direction: column;
+        padding: 40px 40px; /* Zachování paddingu 40px na všech stranách */
+        position: relative;
+        z-index: 1;
+        margin: 50px auto; /* Zmenšení marginu z 100px na 50px pro vyvážení */
+        width: 65%;
+        background-color: rgba(245, 245, 245, 0.82);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        height: auto;
 }
 
 .main-section-bring-two h2 {
@@ -334,17 +322,3 @@ footer p {
     color: #00BFFF;  
 }
 
-.main-section-aboutus, .main-section-aboutus-two {
-    display: flex;                  /* Použijte Flexbox */
-    flex-direction: column;          /* Elementy jsou vertikálně nad sebou */
-    align-items: center;             /* Horizontální centrování obsahu */
-    justify-content: center;         /* Vertikální centrování obsahu */
-    text-align: center;              /* Text bude centrován uvnitř kontejneru */
-    padding: auto 25px;                   /* O něco větší padding pro lepší vzhled */
-    margin: 100px auto;              /* Nastaví kontejner na střed stránky */
-    width: 65%;                      /* Šířka kontejneru */
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
-}
