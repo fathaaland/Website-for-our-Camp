@@ -226,77 +226,100 @@ footer p {
 }
 
 .slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    overflow: hidden;
+    width: 90%; /* Šířka galerie */
+    max-width: 1200px; /* Maximální šířka galerie */
+    margin: 0 auto; /* Centrovat galerii na stránce */
+    overflow: hidden; /* Skryje přebytečný obsah mimo galerii */
+    border-radius: 20px; /* Zaoblené rohy */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Jemný stín */
 }
 
-/* Slide images */
 .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 800px; /* Adjust to fit within the slider */
-    justify-content: center; /* Center align slides */
-    align-items: center; /* Center vertically */
+    width: 100%; /* Šířka kontejneru */
 }
 
 .slides img {
-    width: 800px; /* Set width to 400px */
-    height: 700px; /* Set height to 700px */
-    object-fit: cover; /* Ensures the image covers the area without distorting aspect ratio */
-    cursor: pointer; /* Change cursor to pointer to indicate clickable images */
-    transition: transform 0.3s ease; /* Smooth transition */
+    min-width: 100%; /* Zajistí, že obrázek vyplní celý slider */
+    height: auto;
+    object-fit: cover; /* Ořízne obrázek, aby byl celý vidět */
+    border-radius: 20px;
 }
 
-/* Enlarged image on click */
-.slides img.enlarged {
-    position: relative;
-    z-index: 10; /* Bring enlarged image to the front */
-    transform: scale(1.5); /* Increase the size */
-}
-
-/* Navigation buttons */
-.prev, .next {
+button.prev, button.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
+    font-size: 2em;
     padding: 10px;
     cursor: pointer;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-/* Dots */
-.dots {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.dots span {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
+    z-index: 2;
     border-radius: 50%;
-    display: inline-block;
+    outline: none;
     transition: background-color 0.3s ease;
 }
 
-.active, .dots span:hover {
-    background-color: #717171;
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
+
+button.prev {
+    left: 15px; /* Umístění tlačítka vlevo */
+}
+
+button.next {
+    right: 15px; /* Umístění tlačítka vpravo */
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.dots span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dots span.active {
+    background-color: #00BFFF;
+}
+
+.dots span:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Responzivní design */
+@media (max-width: 768px) {
+    .slider {
+        width: 95%; /* Zúžení galerie na menších zařízeních */
+    }
+
+    button.prev, button.next {
+        font-size: 1.5em; /* Zmenšení tlačítek na menších obrazovkách */
+    }
+
+    .dots span {
+        width: 10px;
+        height: 10px;
+    }
+}
+
 
 .main-section-aboutus, .main-section-aboutus-two, .main-section-bring-two{
         text-align: center;
