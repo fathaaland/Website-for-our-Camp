@@ -171,7 +171,8 @@ footer p {
     line-height: 1.8;
 }
 
-.socials-section a {
+.socials-section a,
+.main-section-aboutus a {
     font-size: 23px;
     color: #00BFFF;
     line-height: 1.8;
