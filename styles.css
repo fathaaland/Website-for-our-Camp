@@ -126,17 +126,17 @@ footer p {
 
 .download-button {
     display: flex;
-    justify-content: center;    /* Horizontální centrování textu */
-    align-items: center;        /* Vertikální centrování textu */
+    justify-content: center;    
+    align-items: center;        
     background-color: #00BFFF;
     color: white;
     text-align: center;
     text-decoration: none;
     border-radius: 30px;
-    font-size: 1.3em;           /* Zvětší velikost písma na požadovanou hodnotu */
+    font-size: 1.3em;           
     font-weight: bold;
-    width: 300px;               /* Nastaví šířku tlačítka */
-    height: 75px;               /* Nastaví výšku tlačítka */
+    width: 300px;             
+    height: 75px;               
 }
 
 
@@ -188,11 +188,11 @@ footer p {
 
 
 .socials-section{
-    display: flex;          /* Flexbox pro zobrazení v řadě */
-    justify-content: center; /* Centrovat obrázky horizontálně */
-    gap: 10px;               /* Mezera mezi obrázky */
-    margin: 0 auto;          /* Vystředí kontejner ve vztahu k nadřazenému prvku */
-    max-width: 100%;         /* Zabrání přetékání, zajistí správné chování při změně velikosti okna */
+    display: flex;          
+    justify-content: center; 
+    gap: 10px;               
+    margin: 0 auto;          
+    max-width: 100%;         
 }
 
 .main-section p {
