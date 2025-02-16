@@ -71,6 +71,18 @@ nav ul li a:hover {
     border-radius: 20px;
     height: auto;
 }
+.main-section-contact{
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    margin: 100px auto;
+    width: 50%;
+    background-color: rgba(245, 245, 245, 0.82);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    height: auto;
+}
 
 h1 {
     font-size: 3em;
@@ -120,7 +132,8 @@ footer p {
 .socials-section h2,
 .main-section-aboutus h2,
 .main-section-bring h2,
-.main-section-gallery h2 {
+.main-section-gallery h2,
+.main-section-contact h2 {
     color: #00BFFF;
 }
 
