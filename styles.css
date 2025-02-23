@@ -191,20 +191,46 @@ footer p {
 }
 
 .social-link {
+    font-size: 1.2em;
     color: #00BFFF;
     text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+    display: inline-block; /* Přidáno pro lepší kontrolu nad velikostí a pozicí */
+    white-space: nowrap; /* Zabrání zalomení textu */
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap; /* Umožní zalomení odkazů na více řádků na malých zařízeních */
+    justify-content: center;
+    gap: 10px; /* Mezera mezi odkazy */
 }
 
 .social-link:hover {
     text-decoration: underline;
 }
 
-.socials-section{
-    display: flex;          
-    justify-content: center; 
-    gap: 10px;               
-    margin: 0 auto;          
-    max-width: 100%;         
+.socials-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .social-link {
+        font-size: 1em; /* Zmenšení velikosti písma na menších zařízeních */
+        margin: 0 5px; /* Zmenšení mezery mezi odkazy */
+    }
+}
+
+@media (max-width: 480px) {
+    .social-link {
+        font-size: 0.9em; /* Další zmenšení velikosti písma na velmi malých zařízeních */
+        margin: 0 3px; /* Další zmenšení mezery mezi odkazy */
+    }
 }
 
 .main-section p {
@@ -416,4 +442,11 @@ button.next {
 }
 .main-section-bring-two a {
     color: #00BFFF;  
+}
+
+.main-section-contact p {
+    font-size: 1.3em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+    overflow-wrap: break-word; /* Zalomení textu v případě potřeby */
 }
