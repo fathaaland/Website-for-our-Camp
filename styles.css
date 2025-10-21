@@ -1,3 +1,8 @@
+/* =============================
+   🏕️ TÁBOR VYHLÍDKA – STYLES.CSS
+   Upraveno pro lepší čitelnost na mobilech
+   ============================= */
+
 /* General Styles */
 * {
     margin: 0;
@@ -19,17 +24,19 @@ body {
     color: black;
 }
 
+/* =============================
+   HEADER + NAVIGACE
+   ============================= */
 .header-content {
     color: #808080;
     text-align: center;
     height: auto;
-    padding: 20px 0;
+    padding: 20px 0 30px 0;
     position: relative;
     z-index: 1;
     width: 100%;
     background-color: rgba(245, 245, 245, 0.9);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    padding-bottom: 30px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -59,31 +66,32 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-.main-section, .registration-section, .socials-section {
+/* =============================
+   HLAVNÍ SEKCE
+   ============================= */
+.main-section, 
+.registration-section, 
+.socials-section,
+.main-section-aboutus, 
+.main-section-aboutus-two, 
+.main-section-bring, 
+.main-section-bring-two,
+.main-section-contact,
+.main-section-gallery {
     text-align: center;
-    padding: 30px;
     position: relative;
     z-index: 1;
-    margin: 100px auto;
-    width: 50%;
-    background-color: rgba(245, 245, 245, 0.82);
+    margin: 60px auto;
+    width: 65%;
+    background-color: rgba(245, 245, 245, 0.85);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    height: auto;
-}
-.main-section-contact{
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    z-index: 1;
-    margin: 100px auto;
-    width: 50%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
+    padding: 40px;
+    font-size: 1.3em;
+    line-height: 1.6em;
 }
 
+/* Nadpisy */
 h1 {
     font-size: 3em;
     margin-bottom: 20px;
@@ -92,26 +100,18 @@ h1 {
 h2 {
     font-size: 2.2em;
     margin: 20px 0;
+    color: #00BFFF;
 }
 
 p {
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 1.6em;
     margin-bottom: 20px;
 }
 
-.socials-section a {
-    font-size: 1.2em;
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
-}
-
-.socials-section a:hover {
-    color: #007BFF;
-}
-
+/* =============================
+   FOOTER
+   ============================= */
 footer {
     flex-shrink: 0; 
     background-color: rgba(245, 245, 245, 0.9);
@@ -123,120 +123,14 @@ footer {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 }
+
 footer p {
-    font-size: 1.3em;
-}
-
-.main-section h2, 
-.registration-section h2, 
-.socials-section h2,
-.main-section-aboutus h2,
-.main-section-bring h2,
-.main-section-gallery h2,
-.main-section-contact h2 {
-    color: #00BFFF;
-}
-
-.download-button {
-    display: flex;
-    justify-content: center;    
-    align-items: center;        
-    background-color: #00BFFF;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.3em;           
-    font-weight: bold;
-    width: 300px;             
-    height: 75px;               
-}
-
-.download-button:hover {
-    background-color: #0056b3;
-}
-
-.registration-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.socials-section {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    align-items: center;
-    justify-content: center;
-}
-
-.socials-section h2 {
-    color: #00BFFF;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.socials-section p {
-    font-size: 18px;
-    color: #00BFFF;
-    line-height: 1.8;
-}
-
-.socials-section a,
-.main-section-aboutus a {
-    font-size: 23px;
-    color: #00BFFF;
-    line-height: 1.8;
-}
-
-.social-link {
     font-size: 1.2em;
-    color: #00BFFF;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
-    display: inline-block; /* Přidáno pro lepší kontrolu nad velikostí a pozicí */
-    white-space: nowrap; /* Zabrání zalomení textu */
 }
 
-.social-links {
-    display: flex;
-    flex-wrap: wrap; /* Umožní zalomení odkazů na více řádků na malých zařízeních */
-    justify-content: center;
-    gap: 10px; /* Mezera mezi odkazy */
-}
-
-.social-link:hover {
-    text-decoration: underline;
-}
-
-.socials-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-@media (max-width: 768px) {
-    .social-link {
-        font-size: 1em; /* Zmenšení velikosti písma na menších zařízeních */
-        margin: 0 5px; /* Zmenšení mezery mezi odkazy */
-    }
-}
-
-@media (max-width: 480px) {
-    .social-link {
-        font-size: 0.9em; /* Další zmenšení velikosti písma na velmi malých zařízeních */
-        margin: 0 3px; /* Další zmenšení mezery mezi odkazy */
-    }
-}
-
-.main-section p {
-    font-size: 23px;
-}
-
+/* =============================
+   SLIDER BACKGROUND
+   ============================= */
 .slider-background {
     position: fixed;
     top: 0;
@@ -261,192 +155,156 @@ footer p {
     opacity: 1; 
 }
 
-.slider {
+/* =============================
+   DOWNLOAD BUTTON
+   ============================= */
+.download-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 90%; 
-    margin: 0 auto; 
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.slides img {
-    min-width: 80%; 
-    height: auto;
-    object-fit: cover; 
-    border-radius: 20px;
-}
-
-button.prev, button.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2em;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 2;
-    border-radius: 25%;
-    outline: none;
-    transition: background-color 0.3s ease;
-}
-
-button.prev:hover, button.next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-button.prev {
-    left: 15px;
-}
-
-button.next {
-    right: 15px; 
-}
-
-.dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 10px;
-}
-
-.dots span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dots span.active {
+    justify-content: center;    
+    align-items: center;        
     background-color: #00BFFF;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.3em;           
+    font-weight: bold;
+    width: 300px;             
+    height: 75px;               
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
 }
 
-.dots span:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+.download-button:hover {
+    background-color: #0056b3;
 }
 
-/* Responzivní design */
+/* =============================
+   RESPONSIVE DESIGN
+   ============================= */
+
+/* --- TABLETY --- */
+@media (max-width: 1024px) {
+    .main-section, 
+    .registration-section, 
+    .socials-section,
+    .main-section-aboutus, 
+    .main-section-aboutus-two, 
+    .main-section-bring, 
+    .main-section-bring-two,
+    .main-section-contact,
+    .main-section-gallery {
+        width: 80%;
+        font-size: 1.1em;
+        padding: 30px;
+    }
+
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 1.8em; }
+    p { font-size: 1.1em; }
+}
+
+/* --- MOBILNÍ ZAŘÍZENÍ --- */
 @media (max-width: 768px) {
-    .slider {
-        width: 95%; /* Zúžení galerie na menších zařízeních */
-    }
-
-    button.prev, button.next {
-        font-size: 1.5em; /* Zmenšení tlačítek na menších obrazovkách */
-    }
-
-    .dots span {
-        width: 10px;
-        height: 10px;
-    }
-
-    .main-section, .registration-section, .socials-section {
-        width: 80%; /* Zvětšení šířky sekcí na menších zařízeních */
-        margin: 50px auto; /* Zmenšení marginu */
+    nav ul li {
+        display: block;
+        margin: 10px 0;
     }
 
     .header-content {
-        padding: 10px 0; /* Zmenšení paddingu */
+        padding: 15px 0;
     }
 
-    nav ul li {
-        display: block; /* Změna na blokové zobrazení pro lepší čitelnost */
-        margin: 10px 0; /* Zvětšení mezery mezi položkami */
+    .main-section, 
+    .registration-section, 
+    .socials-section,
+    .main-section-aboutus, 
+    .main-section-aboutus-two, 
+    .main-section-bring, 
+    .main-section-bring-two,
+    .main-section-contact,
+    .main-section-gallery {
+        width: 90%;
+        padding: 25px;
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.6em; }
+    p  { font-size: 1em; }
+
+    footer p {
+        font-size: 1em;
     }
 
     .download-button {
-        width: 100%; /* Plná šířka tlačítka na mobilních zařízeních */
-        font-size: 1em; /* Zmenšení velikosti písma */
+        width: 90%;
+        font-size: 1em;
+        height: 60px;
     }
+}
 
-    .main-section-aboutus, .main-section-aboutus-two, .main-section-bring-two {
-        width: 90%; /* Zvětšení šířky sekcí na menších zařízeních */
-        padding: 20px; /* Zmenšení paddingu */
-    }
-
-    .main-section-bring {
-        width: 90%; /* Zvětšení šířky sekcí na menších zařízeních */
-        padding: 20px; /* Zmenšení paddingu */
-    }
-
+/* --- MALÉ MOBILY --- */
+@media (max-width: 480px) {
+    .main-section, 
+    .registration-section, 
+    .socials-section,
+    .main-section-aboutus, 
+    .main-section-aboutus-two, 
+    .main-section-bring, 
+    .main-section-bring-two,
+    .main-section-contact,
     .main-section-gallery {
-        width: 95%; /* Zvětšení šířky galerie na menších zařízeních */
-        padding: 20px; /* Zmenšení paddingu */
+        width: 95%;
+        padding: 20px;
+        font-size: 0.95em;
+        line-height: 1.4em;
+    }
+
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.4em; }
+    p  { font-size: 0.95em; }
+
+    footer p {
+        font-size: 0.9em;
     }
 }
 
-.main-section-gallery {
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    z-index: 1;
-    margin: 100px auto;
-    width: 80%;
-    height: 80%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
-}
-
-.main-section-aboutus, .main-section-aboutus-two, .main-section-bring-two {
-    text-align: center;
-    flex-direction: column;
-    padding: 40px 40px; /* Zachování paddingu 40px na všech stranách */
-    position: relative;
-    z-index: 1;
-    margin: 50px auto; /* Zmenšení marginu z 100px na 50px pro vyvážení */
-    width: 65%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
-    line-height: 1.5;
-}
-
-.main-section-bring {
-    text-align: center;
-    flex-direction: column;
-    padding: 40px 40px; /* Zachování paddingu 40px na všech stranách */
-    position: relative;
-    z-index: 1;
-    margin: 50px auto; /* Zmenšení marginu z 100px na 50px pro vyvážení */
-    width: 65%;
-    background-color: rgba(245, 245, 245, 0.82);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    height: auto;
-    font-size: 1.3em;  
-    line-height: 1.5;
-}
-
+/* =============================
+   DROBNOSTI A DETAILY
+   ============================= */
 .main-section-bring-two h2 {
     font-size: 1.8em;    
 }
+
 .main-section-bring-two h3 {
     font-size: 1.5em;    
 }
+
 .main-section-bring-two a {
     color: #00BFFF;  
 }
 
 .main-section-contact p {
-    font-size: 1.3em;
-    line-height: 1.6em;
-    margin-bottom: 20px;
-    overflow-wrap: break-word; /* Zalomení textu v případě potřeby */
+    overflow-wrap: break-word;
+}
+
+.social-link {
+    font-size: 1.2em;
+    color: #00BFFF;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
