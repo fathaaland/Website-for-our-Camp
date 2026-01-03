@@ -3,15 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tábor Vyhlídka</title>
+    <title>Tábor Vyhlídka - Fotogalerie</title>
     <link rel="icon" type="image/x-icon" href="album/logo/vyhlidka9.png">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url('album/apicture.jpg') no-repeat center top;
+            background-size: cover;
+            background-attachment: fixed;
+            color: black;
+        }
+
+        .header-content {
+            color: #808080;
+            text-align: center;
+            height: auto;
+            padding: 20px 0 30px 0;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.9);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        nav ul li a {
+            color: #808080;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #C0C0C0;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .main-section-gallery {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin: 60px auto;
+            width: 90%;
+            max-width: 1200px;
+            background-color: rgba(245, 245, 245, 0.95);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            font-size: 1.1em;
+            line-height: 1.6em;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin: 20px 0 30px 0;
+            color: #00BFFF;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #00BFFF;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .nav-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 191, 255, 0.8);
+        }
+
+        footer {
+            flex-shrink: 0; 
+            background-color: rgba(245, 245, 245, 0.9);
+            color: black;
+            text-align: center;
+            padding-top: 10px;
+            margin-top: 100px;
+            width: 100%;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .main-section-gallery {
+                width: 85%;
+                font-size: 1.1em;
+                padding: 30px;
+            }
+
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-section-gallery {
+                width: 90%;
+                padding: 25px;
+                font-size: 1em;
+                margin: 30px auto;
+            }
+
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            
+            .gallery-item {
+                height: 220px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+            
+            .close-modal {
+                font-size: 35px;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-section-gallery {
+                width: 95%;
+                padding: 20px;
+                font-size: 0.95em;
+                margin: 20px auto;
+            }
+
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .modal-nav {
+                padding: 0 10px;
+            }
+            
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #00BFFF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <div class="header-content">
         <a href="index.html" class="nav-link">
-            <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130">
-          </a>
+            <img src="album/logo/vyhlidka1.png" alt="Vyhlidka_logo" width="130" height="130" style="max-width: 100%; height: auto;">
+        </a>
         <h1>Tábor Vyhlídka</h1>
         <nav>
             <ul>
@@ -25,116 +360,168 @@
         </nav>
     </div>
 
-    
-    <div class="slider-background">
-        <div class="slide" style="background-image: url('album/card_slider/picture1_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture2_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture3_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture4_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture5_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture6_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture7_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture8_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture9_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture10_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture11_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture12_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture13_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture14_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture15_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture16_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture17_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture18_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture19_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture20_low.jpg');"></div>
-<div class="slide" style="background-image: url('album/card_slider/picture21_low.jpg');"></div>
-    </div>
-
-    <!-- Hlavní sekce -->
     <div class="main-section-gallery">
         <h2>Fotogalerie</h2>
-        <div class="slider">
-            <div class="slides">
-                <img src="album/gallery/pic100_low.jpg" alt="Slide 1">
-                <img src="album/gallery/pic101_low.jpg" alt="Slide 2">
-                <img src="album/gallery/pic102_low.jpg" alt="Slide 3">
-                <img src="album/gallery/pic103_low.jpg" alt="Slide 4">
-                <img src="album/gallery/pic104_low.jpg" alt="Slide 5">
-                <img src="album/gallery/pic105_low.jpg" alt="Slide 6">
-                <img src="album/gallery/pic106_low.jpg" alt="Slide 7">
-                <img src="album/gallery/pic107_low.jpg" alt="Slide 8">
-                <img src="album/gallery/pic108_low.jpg" alt="Slide 9">
-                <img src="album/gallery/pic109_low.jpg" alt="Slide 10">
-                <img src="album/gallery/pic110_low.jpg" alt="Slide 11">
-                <img src="album/gallery/pic111_low.jpg" alt="Slide 12">
-                <img src="album/gallery/pic112_low.jpg" alt="Slide 13">
-                <img src="album/gallery/pic113_low.jpg" alt="Slide 14">
-            </div>
-        
-            <!-- Navigation buttons -->
-            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        <!-- Grid galerie -->
+        <div class="gallery-grid" id="galleryGrid">
         </div>
         
-        <!-- Dots for navigation -->
-        <div class="dots">
-            <span onclick="currentSlide(1)"></span>
-            <span onclick="currentSlide(2)"></span>
-            <span onclick="currentSlide(3)"></span>
-            <span onclick="currentSlide(4)"></span>
-            <span onclick="currentSlide(5)"></span>
-            <span onclick="currentSlide(6)"></span>
-            <span onclick="currentSlide(7)"></span>
-            <span onclick="currentSlide(8)"></span>
-            <span onclick="currentSlide(9)"></span>
-            <span onclick="currentSlide(10)"></span>
-            <span onclick="currentSlide(11)"></span>
-            <span onclick="currentSlide(12)"></span>
-            <span onclick="currentSlide(13)"></span>
-            <span onclick="currentSlide(14)"></span>
+        <div class="loading" id="loadingIndicator" style="display: none;"></div>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-nav">
+            <button class="nav-btn" id="prevBtn">&#10094;</button>
+            <button class="nav-btn" id="nextBtn">&#10095;</button>
+        </div>
+        <div class="modal-content">
+            <img class="modal-img" id="modalImage" src="" alt="Zvětšený obrázek">
         </div>
     </div>
 
     <footer>
         <div class="image-container">
-          <img src="album/logo/logo-mesta-zaklad.png" alt="ZdarnS_logo"  width="230" height="130">
-          <img src="album/logo/MSMT_logotyp_text_CMYK_cz.png" alt="MSMT_logo"  width="250" height="130">
-          <img src="album/logo/PODPORIL_KV_CMYK_zakladni.png" alt="KrajVysocina_logo"  width="320" height="130">
-      </div>
-      <br>
-  <p>© 2026 Tábor Vyhlídka</p>
-</footer>
+            <img src="album/logo/logo-mesta-zaklad.png" alt="ZdarnS_logo" width="230" height="130">
+            <img src="album/logo/MSMT_logotyp_text_CMYK_cz.png" alt="MSMT_logo" width="250" height="130">
+            <img src="album/logo/PODPORIL_KV_CMYK_zakladni.png" alt="KrajVysocina_logo" width="320" height="130">
+        </div>
+        <br>
+        <p>© 2026 Tábor Vyhlídka</p>
+    </footer>
 
     <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-    
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-    
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-    
-        function showSlides(n) {
-            let slides = document.querySelectorAll(".slides img");
-            let dots = document.querySelectorAll(".dots span");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            slides.forEach(slide => {
-                slide.style.display = "none";
-                slide.classList.remove("enlarged"); // Remove enlarged class from all images
-            });
-            dots.forEach(dot => dot.classList.remove("active"));
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].classList.add("active");
+        const galleryImages = [
+            'album/gallery/pic100_low.jpg',
+            'album/gallery/pic101_low.jpg',
+            'album/gallery/pic102_low.jpg',
+            'album/gallery/pic103_low.jpg',
+            'album/gallery/pic104_low.jpg',
+            'album/gallery/pic105_low.jpg',
+            'album/gallery/pic106_low.jpg',
+            'album/gallery/pic107_low.jpg',
+            'album/gallery/pic108_low.jpg',
+            'album/gallery/pic109_low.jpg',
+            'album/gallery/pic110_low.jpg',
+            'album/gallery/pic111_low.jpg',
+            'album/gallery/pic112_low.jpg',
+            'album/gallery/pic113_low.jpg'
+        ];
 
-            // Add click event listener to the current slide
-            slides[slideIndex - 1].onclick = function() {
-                this.classList.toggle("enlarged"); // Toggle enlarged class on click
-            };
+        const galleryGrid = document.getElementById('galleryGrid');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        
+        function loadGalleryImages() {
+            loadingIndicator.style.display = 'block';
+            
+            galleryImages.forEach((src, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.index = index;
+                
+                const img = document.createElement('img');
+                img.className = 'gallery-img';
+                img.src = src;
+                img.alt = `Fotka tábora ${index + 1}`;
+                img.loading = "lazy";
+                
+                galleryItem.addEventListener('click', () => openModal(index));
+                
+                galleryItem.appendChild(img);
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 500);
         }
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            updateModalImage();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModalFunc() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateModalImage() {
+            modalImage.src = galleryImages[currentImageIndex];
+            modalImage.alt = `Fotka tábora ${currentImageIndex + 1}`;
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModalImage();
+        }
+
+        closeModal.addEventListener('click', closeModalFunc);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'block') {
+                if (e.key === 'Escape') closeModalFunc();
+                if (e.key === 'ArrowLeft') showPrevImage();
+                if (e.key === 'ArrowRight') showNextImage();
+            }
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        modal.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    showNextImage();
+                } else {
+                    showPrevImage();
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.style.height = '';
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', loadGalleryImages);
     </script>
 </body>
 </html>

@@ -72,12 +72,10 @@
     </footer>
 
     <script>
-        // Získá uložený index snímku z localStorage, nebo nastaví 0, pokud není uložený
         let currentSlide = localStorage.getItem('currentSlide') ? parseInt(localStorage.getItem('currentSlide')) : 0;
         const slides = document.querySelectorAll('.slider-background .slide');
         const totalSlides = slides.length;
     
-        // Funkce pro zobrazení aktuálního snímku
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.remove('active');
@@ -87,17 +85,14 @@
             });
         }
     
-        // Funkce pro přechod na další snímek
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;  // Cyklický přechod na další snímek
+            currentSlide = (currentSlide + 1) % totalSlides; 
             showSlide(currentSlide);
-            localStorage.setItem('currentSlide', currentSlide);  // Uložení aktuálního snímku do localStorage
+            localStorage.setItem('currentSlide', currentSlide); 
         }
     
-        // Automatické přepínání snímků každé 4 sekundy
         setInterval(nextSlide, 10000);
     
-        // Načtení a zobrazení uloženého snímku při načtení stránky
         window.addEventListener('load', () => {
             showSlide(currentSlide);
         });

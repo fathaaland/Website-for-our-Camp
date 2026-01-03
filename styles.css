@@ -160,11 +160,7 @@ footer p {
     background-color: #0056b3;
 }
 
-/* =============================
-   RESPONSIVE DESIGN
-   ============================= */
 
-/* --- TABLETY --- */
 @media (max-width: 1024px) {
     .main-section, 
     .registration-section, 
